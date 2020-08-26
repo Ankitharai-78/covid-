@@ -27,10 +27,10 @@ def get_day_one(country):
         data=(json.loads(req.text))
     return data
 
-def get_total():
-    url="https://api.covid19api.com/total/dayone/country/south-africa/status/confirmed"
+def get_total(country):
+    url="{}total/dayone/country/{}/status/confirmed".format(base_url,country)
     data={}
-     req=requests.get(url)
+    req=requests.get(url)
     if req.status_code==200:
         data=(json.loads(req.text))
     return data
@@ -39,6 +39,6 @@ def get_total():
 
 if __name__== "__main__":
   print(get_day_one("canada"))
-  print(get_total())
+  print(get_total("canada"))
 
 
